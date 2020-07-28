@@ -1,0 +1,12 @@
+FROM %CUSTOM_IMAGE_NAME%:%CUSTOM_IMAGE_VERSION%-alpine
+MAINTAINER Nam Hoang <particel4dev@gmail.com>
+
+RUN npm install -g json-server@%JSONSERVER_VERSION%
+
+WORKDIR /data
+VOLUME /data
+
+EXPOSE 80
+ADD docker-entrypoint.sh /docker-entrypoint.sh
+ENTRYPOINT ["sh", "/docker-entrypoint.sh"]
+CMD []
