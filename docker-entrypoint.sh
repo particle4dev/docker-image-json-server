@@ -1,8 +1,11 @@
 #!/bin/sh
 
-args="$@"
+if [ -z $PORT ];
+then
+  PORT=8888
+fi
 
-args="$@ -p 80"
+args="$@ -p $PORT"
 
 file=/data/db.json
 if [ -f $file ]; then
@@ -16,4 +19,4 @@ if [ -f $file ]; then
     args="$args file.js"
 fi
 
-json-server $args
+json-server --host 0.0.0.0 $args

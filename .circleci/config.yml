@@ -32,4 +32,7 @@ jobs:
 workflows:
   build_and_test:
     jobs:
-      - publish
+      - publish:
+          filters:
+            branches:
+              only: /master\/.*/
